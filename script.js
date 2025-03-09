@@ -8,6 +8,10 @@ const buttonAction = (value) => {
     btnToDisplay = "";
     return display(btnToDisplay)
   }
+  if(value === "=")
+  {
+    return displayTotal()
+  }
   btnToDisplay += value;
   display(btnToDisplay);
 };
@@ -23,3 +27,9 @@ allbtnelms.forEach((btn) => {
 const display = (str) => {
   displayElm.innerText = str || "0.0";
 };
+
+// calculate total
+const displayTotal = ()=>{
+const total = eval(btnToDisplay)
+display(total)
+}
