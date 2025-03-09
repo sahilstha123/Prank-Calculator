@@ -6,16 +6,14 @@ const displayElm = document.querySelector(".display");
 const buttonAction = (value) => {
   if (value === "AC") {
     btnToDisplay = "";
-    return display(btnToDisplay)
+    return display(btnToDisplay);
   }
-  if(value === "C")
-  {
-    btnToDisplay = btnToDisplay.slice(0,-1)
-    return display(btnToDisplay)
+  if (value === "C") {
+    btnToDisplay = btnToDisplay.slice(0, -1);
+    return display(btnToDisplay);
   }
-  if(value === "=")
-  {
-    return displayTotal()
+  if (value === "=") {
+    return displayTotal();
   }
   btnToDisplay += value;
   display(btnToDisplay);
@@ -34,7 +32,8 @@ const display = (str) => {
 };
 
 // calculate total
-const displayTotal = ()=>{
-const total = eval(btnToDisplay)
-display(total)
-}
+const displayTotal = () => {
+  const total = eval(btnToDisplay);
+  btnToDisplay = total.tostring();
+  display(btnToDisplay);
+};
