@@ -8,6 +8,11 @@ const buttonAction = (value) => {
     btnToDisplay = "";
     return display(btnToDisplay)
   }
+  if(value === "C")
+  {
+    btnToDisplay = btnToDisplay.slice(0,-1)
+    return display(btnToDisplay)
+  }
   if(value === "=")
   {
     return displayTotal()
