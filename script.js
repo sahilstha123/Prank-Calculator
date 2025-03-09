@@ -1,11 +1,11 @@
-const allbutnelms = document.querySelectorAll(".btn");
-console.log(allbutnelms);
-let strTodisplay = "";
-allbutnelms.forEach((item) => {
-  item.addEventListener("click", () => {
-    const value = item.innerText;
-    strTodisplay += value;
-    console.log(strTodisplay)
+const allbtnelms = document.querySelectorAll(".btn");
+let btnToDisplay = "";
+allbtnelms.forEach((btn) => {
+  // console.log(btn)
+  btn.addEventListener("click", () => {
+    const value = btn.innerText;
+    btnToDisplay += value;
+    console.log(btnToDisplay);
     // console.log(value);
   });
 });
