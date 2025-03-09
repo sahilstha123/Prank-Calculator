@@ -1,11 +1,146 @@
-*{
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+:root {
+  --primaryColor: #000000;
+  --secondaryColor: #ff9f0a;
+  --secondaryHoverColor: #db8607;
+  --ternaryColor: #2a2a2c;
+  --ternaryHoverColor: #1d1d1e;
+  --tertiaryColor: #e6e6e7;
+  --btnfirstColor: #5c5c5f;
+  --btnfirstHoverColor: #454546;
 }
 .fontdiner-swanky-regular {
-    font-family: "Fontdiner Swanky", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
+  font-family: "Fontdiner Swanky", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  font-size: 2rem;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  background: linear-gradient(rgb(195, 138, 34), var(--primaryColor));
+  min-height: 100vh;
+}
+.calculator {
+  padding: 2rem 1.5rem;
+  border-radius: 10px;
+  width: 500px;
+  color: var(--tertiaryColor);
+  background: var(--primaryColor);
+
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    "display display display display"
+    "ac c per divide"
+    "btn7 btn8 btn9 x"
+    "btn4 btn5 btn6 minus"
+    "btn1 btn2 btn3 plus"
+    "btn0 dot equal equal";
+  transform: perspective(70rem) rotateX(30deg);
+}
+.display {
+  padding: 1rem;
+  font-size: 2.5rem;
+  text-align: end;
+  font-weight: bolder;
+  grid-area: display;
+
+  /* box-shadow: 0 10px 5px rgba(128, 128, 128, 0.527); */
+}
+.calculator .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--ternaryColor);
+  border-radius: 50%;
+  /* width: 90%; */
+  height: 85px;
+  box-shadow: 0 10px 5px rgb(128 128 128 / 40%);
+}
+.btn-org {
+  background: var(--secondaryColor) !important;
+}
+.btn-org:hover {
+  background-color: var(--secondaryHoverColor) !important;
+}
+.btn:hover {
+  cursor: pointer;
+  transition: all 0.3s;
+  background: var(--ternaryHoverColor);
+}
+.btn-lightgrey {
+  background: var(--btnfirstColor) !important;
+}
+.btn-lightgrey:hover {
+  background: var(--btnfirstHoverColor) !important;
+}
+
+.btn-ac {
+  grid-area: ac;
+}
+.btn-c {
+  grid-area: c;
+}
+.btn-per {
+  grid-area: per;
+}
+.btn-divide {
+  grid-area: divide;
+}
+.btn-7 {
+  grid-area: btn7;
+}
+.btn-8 {
+  grid-area: btn8;
+}
+.btn-9 {
+  grid-area: btn9;
+}
+.btn-x {
+  grid-area: x;
+}
+.btn-4 {
+  grid-area: btn4;
+}
+.btn-5 {
+  grid-area: btn5;
+}
+.btn-6 {
+  grid-area: btn6;
+}
+.btn-minus {
+  grid-area: minus;
+}
+.btn-1 {
+  grid-area: btn1;
+}
+.btn-2 {
+  grid-area: btn2;
+}
+.btn-3 {
+  grid-area: btn3;
+}
+.btn-plus {
+  grid-area: plus;
+}
+.btn-0 {
+  grid-area: btn0;
+}
+.btn-dot {
+  grid-area: dot;
+}
+.btn-equal {
+  grid-area: equal;
+  width: 100% !important;
+  border-radius: 10px !important;
+}
