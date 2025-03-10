@@ -4,7 +4,7 @@ let strToDisplay = "";
 const displayElm = document.querySelector(".display");
 
 const operators = ["%", "/", "*", "+", "-"];
-
+// let lastOperator = "";
 const buttonAction = (value) => {
   if (value === "AC") {
     strToDisplay = "";
@@ -15,6 +15,8 @@ const buttonAction = (value) => {
     return display(strToDisplay);
   }
   if (value === "=") {
+    // console.log(lastOperator,"last")
+    lastOperator = "";
     // get the last character
     const lastChar = strToDisplay[strToDisplay.length - 1];
     // console.log(lastChar)
@@ -27,14 +29,45 @@ const buttonAction = (value) => {
   }
   // to prevent multiple operator to press
 
-  if(operators.includes(value))
-  {
+  if (operators.includes(value)) {
+    // lastOperator = value;
+    // console.log(lastOperator);
     // get the last char
-    const lastChar = strToDisplay[strToDisplay.length-1]
-    if (operators.includes(lastChar))
-    {
+    const lastChar = strToDisplay[strToDisplay.length - 1];
+    if (operators.includes(lastChar)) {
       // remove the last char
-      strToDisplay = strToDisplay.slice(0,-1)
+      strToDisplay = strToDisplay.slice(0, -1);
+    }
+  }
+
+  // to prevent multiple dot
+  // if (value === ".") {
+  //   // get the index value of last operator
+  //   const lastOperatorIndex = strToDisplay.lastIndexOf(lastOperator);
+  //   console.log(lastOperatorIndex, "----");
+
+  //   // make the lastnumberset on the last operator
+  //   const lastNumberSet = strToDisplay.slice(lastOperatorIndex);
+  //   console.log(lastNumberSet);
+  //   if (lastNumberSet.includes(".")) {
+  //     return;
+  //   }
+  //   if (!lastOperator && strToDisplay.includes(".")) {
+  //     return;
+  //   }
+  // }
+
+  if (value === ".") {
+    const parts = strToDisplay.split(/[-+*/%]/);
+    console.log(parts);
+
+    const currentNumber = parts[parts.length-1]
+    if(currentNumber.includes("."))
+      return;
+
+    if(currentNumber === "" &&parts.length>0)
+    {
+      strToDisplay+=0
     }
   }
   strToDisplay += value;
