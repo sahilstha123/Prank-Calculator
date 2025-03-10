@@ -25,6 +25,18 @@ const buttonAction = (value) => {
     }
     return displayTotal();
   }
+  // to prevent multiple operator to press
+
+  if(operators.includes(value))
+  {
+    // get the last char
+    const lastChar = strToDisplay[strToDisplay.length-1]
+    if (operators.includes(lastChar))
+    {
+      // remove the last char
+      strToDisplay = strToDisplay.slice(0,-1)
+    }
+  }
   strToDisplay += value;
   display(strToDisplay);
 };
