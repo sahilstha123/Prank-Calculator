@@ -1,22 +1,32 @@
 const allbtnelms = document.querySelectorAll(".btn");
-let btnToDisplay = "";
+let strToDisplay = "";
 
 const displayElm = document.querySelector(".display");
 
+const operators = ["%", "/", "*", "+", "-"];
+
 const buttonAction = (value) => {
   if (value === "AC") {
-    btnToDisplay = "";
-    return display(btnToDisplay);
+    strToDisplay = "";
+    return display(strToDisplay);
   }
   if (value === "C") {
-    btnToDisplay = btnToDisplay.slice(0, -1);
-    return display(btnToDisplay);
+    strToDisplay = strToDisplay.slice(0, -1);
+    return display(strToDisplay);
   }
   if (value === "=") {
+    // get the last character
+    const lastChar = strToDisplay[strToDisplay.length - 1];
+    // console.log(lastChar)
+
+    // check if it get the one last operator character
+    if (operators.includes(lastChar)) {
+      strToDisplay = strToDisplay.slice(0, -1);
+    }
     return displayTotal();
   }
-  btnToDisplay += value;
-  display(btnToDisplay);
+  strToDisplay += value;
+  display(strToDisplay);
 };
 // attach click event to all buttons
 allbtnelms.forEach((btn) => {
@@ -33,7 +43,7 @@ const display = (str) => {
 
 // calculate total
 const displayTotal = () => {
-  const total = eval(btnToDisplay);
-  btnToDisplay = total.tostring();
-  display(btnToDisplay);
+  const total = eval(strToDisplay);
+  strToDisplay = total.toString();
+  display(strToDisplay);
 };
