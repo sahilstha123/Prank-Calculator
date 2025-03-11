@@ -61,13 +61,11 @@ const buttonAction = (value) => {
     const parts = strToDisplay.split(/[-+*/%]/);
     console.log(parts);
 
-    const currentNumber = parts[parts.length-1]
-    if(currentNumber.includes("."))
-      return;
+    const currentNumber = parts[parts.length - 1];
+    if (currentNumber.includes(".")) return;
 
-    if(currentNumber === "" &&parts.length>0)
-    {
-      strToDisplay+=0
+    if (currentNumber === "" && parts.length > 0) {
+      strToDisplay += 0;
     }
   }
   strToDisplay += value;
@@ -88,7 +86,14 @@ const display = (str) => {
 
 // calculate total
 const displayTotal = () => {
-  const total = eval(strToDisplay);
+  const extranumber = randomNumber()
+  const total = eval(strToDisplay) + extranumber;
   strToDisplay = total.toString();
   display(strToDisplay);
+};
+
+// random number generated
+const randomNumber = () => {
+  const num = Math.round(Math.random());
+  return num < 8 ? num : 0;
 };
