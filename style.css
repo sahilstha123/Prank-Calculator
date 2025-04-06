@@ -144,3 +144,24 @@ body {
   width: 100% !important;
   border-radius: 10px !important;
 }
+
+.prank{
+  background-color: red;
+  color: white;
+  animation: shake .5s;
+}
+@keyframes shake {
+  0%{
+    transform: translateX(10px);
+  }
+  50%{
+    transform: translateX(-10px);
+  }
+  80%{
+    transform: translateX(10px);
+  }
+  100%{
+    transform: translateX(-10px);
+  }
+  
+}
