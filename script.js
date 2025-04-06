@@ -1,11 +1,14 @@
 const allbtnelms = document.querySelectorAll(".btn");
 let strToDisplay = "";
-
 const displayElm = document.querySelector(".display");
 
 const operators = ["%", "/", "*", "+", "-"];
+
+// load the sound
+const audio = new Audio("./assets/prank.mp3");
 // let lastOperator = "";
 const buttonAction = (value) => {
+  displayElm.classList.remove("prank");
   if (value === "AC") {
     strToDisplay = "";
     return display(strToDisplay);
@@ -73,7 +76,12 @@ const buttonAction = (value) => {
 };
 // attach click event to all buttons
 allbtnelms.forEach((btn) => {
+  btn.addEventListener("mousedown", () => {
+    btn.style.scale = ".9";
+  });
   btn.addEventListener("click", () => {
+    btn.style.scale = "1";
+
     const value = btn.innerText;
     buttonAction(value);
   });
@@ -86,7 +94,15 @@ const display = (str) => {
 
 // calculate total
 const displayTotal = () => {
-  const extranumber = randomNumber()
+  const extranumber = randomNumber();
+  if (extranumber) {
+    displayElm.classList.add("prank");
+    audio.play();
+    setTimeout(() => {
+      audio.pause();
+      audio.currentTime = 0;
+    }, 4000);
+  }
   const total = eval(strToDisplay) + extranumber;
   strToDisplay = total.toString();
   display(strToDisplay);
